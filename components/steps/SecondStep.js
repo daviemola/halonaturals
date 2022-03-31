@@ -5,6 +5,8 @@ import toast, { Toaster } from "react-hot-toast";
 export default function SecondStep({ nextStep, handleFormData, values }) {
   const [error, setError] = useState(false);
 
+  console.log(values);
+
   // after form submit validating the form data using validator
   const submitFormData = (e) => {
     e.preventDefault();
@@ -15,9 +17,10 @@ export default function SecondStep({ nextStep, handleFormData, values }) {
       validator.isEmpty(values.lastName) ||
       validator.isEmpty(values.amazonOrderNo) ||
       validator.isEmpty(values.email) ||
-      validator.isEmpty(values.streetAddress) ||
+      validator.isEmpty(values.addressLine1) ||
       validator.isEmpty(values.city) ||
-      validator.isEmpty(values.state) ||
+      validator.isEmpty(values.town) ||
+      validator.isEmpty(values.county) ||
       validator.isEmpty(values.specialOffers)
     ) {
       setError(true);
@@ -30,21 +33,21 @@ export default function SecondStep({ nextStep, handleFormData, values }) {
   };
 
   return (
-    <div className="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
       <Toaster />
 
       <form className="max-w-md w-full space-y-4" onSubmit={submitFormData}>
         <div>
-          <p className="uppercase text-sm tracking-widest font-bold text-blue-500 pb-4">
-            Step 2 out of 4
+          <p className="uppercase text-sm tracking-widest font-bold text-gray-500 pb-4">
+            Step 2 of 4
           </p>
           <p className="text-gray-700 font-bold text-2xl uppercase">
-            Please enter your information with Amazon order number.
+            PLEASE ENTER YOUR INFORMATION WITH YOUR AMAZON ORDER NUMBER
           </p>
         </div>
         <div className="mb-2">
           <label htmlFor="email" className="block mb-2 text-sm font-medium">
-            First Name
+            First Name *
           </label>
           <input
             type="text"
@@ -59,7 +62,7 @@ export default function SecondStep({ nextStep, handleFormData, values }) {
         </div>
         <div className="mb-2">
           <label htmlFor="email" className="block mb-2 text-sm font-medium">
-            Last Name
+            Last Name *
           </label>
           <input
             type="text"
@@ -74,7 +77,7 @@ export default function SecondStep({ nextStep, handleFormData, values }) {
         </div>
         <div className="mb-2">
           <label htmlFor="email" className="block mb-2 text-sm font-medium">
-            Amazon Order Number (Include dashes)
+            Amazon Order Number (Include dashes) *
           </label>
           <input
             type="text"
@@ -89,7 +92,7 @@ export default function SecondStep({ nextStep, handleFormData, values }) {
         </div>
         <div className="mb-2">
           <label htmlFor="email" className="block mb-2 text-sm font-medium">
-            Email Address
+            Email Address *
           </label>
           <input
             type="email"
@@ -104,14 +107,14 @@ export default function SecondStep({ nextStep, handleFormData, values }) {
         </div>
         <div className="mb-2">
           <label htmlFor="email" className="block mb-2 text-sm font-medium">
-            Street Address
+            Address Line 1 *
           </label>
           <input
             type="text"
             id="text"
-            name="streetAddress"
-            value={values.streetAddress}
-            onChange={handleFormData("streetAddress")}
+            name="addressLine1"
+            value={values.addressLine1}
+            onChange={handleFormData("addressLine1")}
             className="border-2 border-gray-300 sm:w-3/4 w-full bg-white h-12 px-5 pr-16 rounded text-md focus:outline-none"
             placeholder="Street Address"
             required
@@ -119,7 +122,37 @@ export default function SecondStep({ nextStep, handleFormData, values }) {
         </div>
         <div className="mb-2">
           <label htmlFor="email" className="block mb-2 text-sm font-medium">
-            City
+            Address Line 2
+          </label>
+          <input
+            type="text"
+            id="text"
+            name="addressLine2"
+            value={values.addressLine2}
+            onChange={handleFormData("addressLine2")}
+            className="border-2 border-gray-300 sm:w-3/4 w-full bg-white h-12 px-5 pr-16 rounded text-md focus:outline-none"
+            placeholder="Street Address"
+            required
+          />
+        </div>
+        <div className="mb-2">
+          <label htmlFor="email" className="block mb-2 text-sm font-medium">
+            Town *
+          </label>
+          <input
+            type="text"
+            name="town"
+            value={values.town}
+            onChange={handleFormData("town")}
+            className="border-2 border-gray-300 sm:w-3/4 w-full bg-white h-12 px-5 pr-16 rounded text-md focus:outline-none"
+            placeholder="Town"
+            required
+          />
+        </div>
+
+        <div className="mb-2">
+          <label htmlFor="email" className="block mb-2 text-sm font-medium">
+            City *
           </label>
           <input
             type="text"
@@ -131,38 +164,25 @@ export default function SecondStep({ nextStep, handleFormData, values }) {
             required
           />
         </div>
+
         <div className="mb-2">
           <label htmlFor="email" className="block mb-2 text-sm font-medium">
-            Zip Code
-          </label>
-          <input
-            type="number"
-            name="zipcode"
-            value={values.zipcode}
-            onChange={handleFormData("zipcode")}
-            className="border-2 border-gray-300 sm:w-3/4 w-full bg-white h-12 px-5 rounded text-md focus:outline-none"
-            placeholder="Enter Zip Code"
-            required
-          />
-        </div>
-        <div className="mb-2">
-          <label htmlFor="email" className="block mb-2 text-sm font-medium">
-            State
+            County *
           </label>
           <input
             type="text"
-            name="state"
-            value={values.state}
-            onChange={handleFormData("state")}
+            name="county"
+            value={values.county}
+            onChange={handleFormData("county")}
             className="border-2 border-gray-300 sm:w-3/4 w-full bg-white h-12 px-5 pr-16 rounded text-md focus:outline-none"
-            placeholder="State"
+            placeholder="county"
             required
           />
         </div>
         <div className="mb-2">
           <fieldset>
             <p className="mb-2 text-gray-700">
-              Would you love to recieve our offers?
+              Would you love to recieve our offers? *
             </p>
             <div className="flex items-center mb-1">
               <input

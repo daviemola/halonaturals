@@ -5,6 +5,8 @@ import toast, { Toaster } from "react-hot-toast";
 export default function FirstStep({ nextStep, handleFormData, values }) {
   const [error, setError] = useState(false);
 
+  console.log(values);
+
   // after form submit validating the form data using validator
   const submitFormData = (e) => {
     e.preventDefault();
@@ -28,8 +30,8 @@ export default function FirstStep({ nextStep, handleFormData, values }) {
       <Toaster />
       <form className="max-w-md w-full space-y-8" onSubmit={submitFormData}>
         <div>
-          <p className="uppercase text-sm tracking-widest font-bold text-blue-500 pb-4">
-            Step 1 out of 4
+          <p className="uppercase text-sm tracking-widest font-bold text-gray-500 pb-4">
+            Step 1 of 4
           </p>
           <p className="text-gray-700 font-bold text-2xl uppercase">
             Please Fill in the form.
@@ -38,7 +40,7 @@ export default function FirstStep({ nextStep, handleFormData, values }) {
 
         <div className="mb-2">
           <label htmlFor="email" className="block mb-2 text-sm font-medium">
-            Which product you purchased?
+            Which product have you purchased?
           </label>
           <select
             name="product"
@@ -60,6 +62,7 @@ export default function FirstStep({ nextStep, handleFormData, values }) {
             type="date"
             id="datePurchased"
             name="datePurchased"
+            max={new Date().toISOString().split("T")[0]}
             value={values.datePurchased}
             onChange={handleFormData("datePurchased")}
             className="border-2 border-gray-300 sm:w-3/4 w-full bg-white h-12 px-5 rounded text-md focus:outline-none"
@@ -136,7 +139,7 @@ export default function FirstStep({ nextStep, handleFormData, values }) {
         <div className="mb-2">
           <fieldset>
             <p className="mb-2 text-gray-700">
-              Have you been using this product for 7 days now?
+              Have you been using this product for at least 7 days?
             </p>
             <div className="flex items-center mb-1">
               <input

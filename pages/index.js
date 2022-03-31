@@ -20,10 +20,11 @@ function App() {
     lastName: "",
     amazonOrderNo: "",
     email: "",
-    streetAddress: "",
+    addressLine1: "",
+    addressLine2: "",
     city: "",
-    state: "",
-    zipcode: "",
+    town: "",
+    county: "",
     specialOffers: "",
     freeProduct: "",
     review: "",
@@ -33,6 +34,10 @@ function App() {
     const data = window.localStorage.getItem("values");
     if (data !== null) setFormData(JSON.parse(data));
   }, []);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [step]);
 
   // function for going to next step by increasing step state by 1
   const nextStep = () => {

@@ -4,6 +4,7 @@ import validator from "validator";
 import toast, { Toaster } from "react-hot-toast";
 import { db } from "../../firebase";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
+import Link from "next/link";
 
 export default function ThirdStep({ nextStep, handleFormData, values }) {
   const [error, setError] = useState(false);
@@ -17,10 +18,19 @@ export default function ThirdStep({ nextStep, handleFormData, values }) {
     satisfactionlevel = true;
   }
 
+  console.log(values);
+
   // after form submit validating the form data using validator
   const submitFormData = async (e) => {
     e.preventDefault();
     setLoading(true);
+
+    if (values.review.length < 150) {
+      setError(true);
+      toast.error("Review must be atleast 150 characters");
+      setLoading(false);
+      return;
+    }
 
     // checking if value of first name and last name is empty show error else take to step 2
     if (
@@ -31,6 +41,7 @@ export default function ThirdStep({ nextStep, handleFormData, values }) {
       toast.error("Fill all required fields.");
     } else {
       try {
+        return;
         const collectionRef = collection(db, "customers");
         const docRef = await addDoc(collectionRef, {
           ...values,
@@ -48,12 +59,12 @@ export default function ThirdStep({ nextStep, handleFormData, values }) {
   };
 
   return (
-    <div className="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
       <Toaster />
       <form className="max-w-md w-full space-y-8" onSubmit={submitFormData}>
         <div>
-          <p className="uppercase text-sm tracking-widest font-bold text-blue-500 pb-4">
-            Step 3 out of 4
+          <p className="uppercase text-sm tracking-widest font-bold text-gray-500 pb-4">
+            Step 3 of 4
           </p>
           <p className="text-gray-700 font-bold text-2xl uppercase">
             Please tell us which free product you&apos;d like to recieve.
@@ -62,7 +73,7 @@ export default function ThirdStep({ nextStep, handleFormData, values }) {
 
         <div className="mb-2">
           <label htmlFor="email" className="block mb-2 text-sm font-medium">
-            Select a product.
+            Select a product *
           </label>
           <select
             name="freeProduct"
@@ -70,14 +81,14 @@ export default function ThirdStep({ nextStep, handleFormData, values }) {
             className="border-2 border-gray-300 sm:w-3/4 w-full bg-white h-12 px-5 pr-16 rounded text-md focus:outline-none"
           >
             <option></option>
-            <option value="Vegan D3 drops for babies">
-              Vegan D3 drops for babies
+            <option value="Vegan D3 drops for babies - 55 drops sample">
+              Vegan D3 drops for babies - 55 drops sample
             </option>
           </select>
         </div>
         <div>
           <p className="text-gray-700 font-bold text-2xl uppercase tracking-widest">
-            THANK YOU FOR BEING A CUSTOMER! BUT WE NEED YOUR HELP!
+            THANK YOU FOR BEING A CUSTOMER! BUT WE NEED YOUR HELP
           </p>
           {satisfactionlevel && (
             <p className="text-gray-600">
@@ -96,12 +107,20 @@ export default function ThirdStep({ nextStep, handleFormData, values }) {
         </div>
         <div className="flex items-center justify-center">
           {satisfactionlevel && (
-            <Image
-              src="/Amazon_logo.svg"
-              height={50}
-              width={200}
-              alt="amazonlogo"
-            />
+            <div className="flex flex-col">
+              <Image
+                src="/Amazon_logo.svg"
+                height={50}
+                width={200}
+                alt="amazonlogo"
+              />
+              <Image
+                src="/fivestars.png"
+                height={40}
+                width={150}
+                alt="amazonlogo"
+              />
+            </div>
           )}
         </div>
 
@@ -110,8 +129,8 @@ export default function ThirdStep({ nextStep, handleFormData, values }) {
             htmlFor="email"
             className="block mb-2 text-sm font-medium text-gray-600"
           >
-            Your review/comment here. (min 150 characters to qualify for free
-            product)
+            Review / Comments* (Minimum 150 characters qualify for your free
+            item)
           </label>
           <textarea
             rows="2"
@@ -120,26 +139,53 @@ export default function ThirdStep({ nextStep, handleFormData, values }) {
             required
             type="text"
             name="review"
+            minLength={150}
             value={values.review}
             onChange={handleFormData("review")}
           ></textarea>
         </div>
         {satisfactionlevel && (
-          <button className="bg-gray-800 text-white py-2 rounded uppercase font-semibold px-4">
-            click to submit review on amazon
+          <a
+            className="bg-gray-700 text-white py-2 rounded uppercase font-semibold px-4 my-2"
+            href="https://www.amazon.com/review/create-review?&asin=B09189HG87"
+            target={"_blank"}
+            rel={"noreferrer"}
+          >
+            CLICK TO POST A REVIEW ON AMAZON
+          </a>
+        )}
+        {loading ? (
+          <button
+            disabled
+            type="button"
+            className="bg-gray-800 text-white py-2 rounded px-4"
+          >
+            <svg
+              role="status"
+              className="inline w-4 h-4 mr-2 text-gray-200 animate-spin dark:text-gray-600"
+              viewBox="0 0 100 101"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
+                fill="currentColor"
+              />
+              <path
+                d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
+                fill="#1C64F2"
+              />
+            </svg>
+            Submitting...
+          </button>
+        ) : (
+          <button
+            type="submit"
+            className="bg-gray-800 text-white py-2 rounded uppercase font-semibold px-4"
+          >
+            Submit and get your free item
           </button>
         )}
-        <button
-          type="submit"
-          className="bg-blue-600 text-white py-2 rounded uppercase font-semibold px-4"
-        >
-          {loading
-            ? `Saving your information`
-            : `
-          Submit and get your free item
-          
-          `}
-        </button>
       </form>
     </div>
   );
