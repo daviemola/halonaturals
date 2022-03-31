@@ -57,14 +57,14 @@ export default function ThirdStep({ nextStep, handleFormData, values }) {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen flex justify-center pb-12 px-4 sm:px-6 lg:px-8">
       <Toaster />
       <form className="max-w-md w-full space-y-8" onSubmit={submitFormData}>
         <div>
-          <p className="uppercase text-sm tracking-widest font-bold text-gray-500 pb-4 text-center">
+          <p className="uppercase text-sm tracking-widest font-bold text-gray-500 pb-4 sm:text-left text-center">
             Step 3 of 4
           </p>
-          <p className="text-gray-700 font-bold text-2xl uppercase text-center">
+          <p className="text-gray-700 font-bold text-2xl uppercase sm:text-left text-center">
             Please tell us which free product you&apos;d like to recieve.
           </p>
         </div>
@@ -76,7 +76,7 @@ export default function ThirdStep({ nextStep, handleFormData, values }) {
           <select
             name="freeProduct"
             onChange={handleFormData("freeProduct")}
-            className="border-2 border-gray-300 w-full bg-white h-12 px-5 pr-16 rounded text-md focus:outline-none"
+            className="border-2 border-gray-300 w-full bg-white h-12 px-5 rounded text-md focus:outline-none"
           >
             <option></option>
             <option value="Vegan D3 drops for babies - 55 drops sample">
@@ -132,7 +132,7 @@ export default function ThirdStep({ nextStep, handleFormData, values }) {
           </label>
           <textarea
             rows="3"
-            className="border-2 border-gray-300 w-full bg-white px-5 pr-16 py-3 rounded text-md focus:outline-none"
+            className="border-2 border-gray-300 w-full bg-white px-5 py-3 rounded text-md focus:outline-none"
             placeholder="Your review here."
             required
             type="text"

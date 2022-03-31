@@ -45,7 +45,7 @@ export default function FirstStep({ nextStep, handleFormData, values }) {
           <select
             name="product"
             onChange={handleFormData("product")}
-            className="border-2 border-gray-300 sm:w-3/4 w-full bg-white h-12 px-5 pr-16 rounded text-md focus:outline-none"
+            className="border-2 border-gray-300 sm:w-3/4 w-full bg-white h-12 px-5 rounded text-md focus:outline-none"
           >
             <option></option>
             <option value="Vegan D3 drops for babies">

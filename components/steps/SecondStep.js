@@ -54,7 +54,7 @@ export default function SecondStep({ nextStep, handleFormData, values }) {
             name="firstName"
             value={values.firstName}
             onChange={handleFormData("firstName")}
-            className="border-2 border-gray-300 sm:w-3/4 w-full bg-white h-12 px-5 pr-16 rounded text-md focus:outline-none"
+            className="border-2 border-gray-300 sm:w-3/4 w-full bg-white h-12 px-5 rounded text-md focus:outline-none"
             placeholder="First Name"
             required
           />
@@ -69,7 +69,7 @@ export default function SecondStep({ nextStep, handleFormData, values }) {
             name="lastName"
             value={values.lastName}
             onChange={handleFormData("lastName")}
-            className="border-2 border-gray-300 sm:w-3/4 w-full bg-white h-12 px-5 pr-16 rounded text-md focus:outline-none"
+            className="border-2 border-gray-300 sm:w-3/4 w-full bg-white h-12 px-5 rounded text-md focus:outline-none"
             placeholder="Last Name"
             required
           />
@@ -84,7 +84,7 @@ export default function SecondStep({ nextStep, handleFormData, values }) {
             name="amazonOrderNo"
             value={values.amazonOrderNo}
             onChange={handleFormData("amazonOrderNo")}
-            className="border-2 border-gray-300 sm:w-3/4 w-full bg-white h-12 px-5 pr-16 rounded text-md focus:outline-none"
+            className="border-2 border-gray-300 sm:w-3/4 w-full bg-white h-12 px-5 rounded text-md focus:outline-none"
             placeholder="Amazon Order Number"
             required
           />
@@ -99,7 +99,7 @@ export default function SecondStep({ nextStep, handleFormData, values }) {
             name="email"
             value={values.email}
             onChange={handleFormData("email")}
-            className="border-2 border-gray-300 sm:w-3/4 w-full bg-white h-12 px-5 pr-16 rounded text-md focus:outline-none"
+            className="border-2 border-gray-300 sm:w-3/4 w-full bg-white h-12 px-5 rounded text-md focus:outline-none"
             placeholder="Email Address"
             required
           />
@@ -114,7 +114,7 @@ export default function SecondStep({ nextStep, handleFormData, values }) {
             name="addressLine1"
             value={values.addressLine1}
             onChange={handleFormData("addressLine1")}
-            className="border-2 border-gray-300 sm:w-3/4 w-full bg-white h-12 px-5 pr-16 rounded text-md focus:outline-none"
+            className="border-2 border-gray-300 sm:w-3/4 w-full bg-white h-12 px-5 rounded text-md focus:outline-none"
             placeholder="Street Address"
             required
           />
@@ -129,7 +129,7 @@ export default function SecondStep({ nextStep, handleFormData, values }) {
             name="addressLine2"
             value={values.addressLine2}
             onChange={handleFormData("addressLine2")}
-            className="border-2 border-gray-300 sm:w-3/4 w-full bg-white h-12 px-5 pr-16 rounded text-md focus:outline-none"
+            className="border-2 border-gray-300 sm:w-3/4 w-full bg-white h-12 px-5 rounded text-md focus:outline-none"
             placeholder="Street Address"
           />
         </div>
@@ -142,7 +142,7 @@ export default function SecondStep({ nextStep, handleFormData, values }) {
             name="town"
             value={values.town}
             onChange={handleFormData("town")}
-            className="border-2 border-gray-300 sm:w-3/4 w-full bg-white h-12 px-5 pr-16 rounded text-md focus:outline-none"
+            className="border-2 border-gray-300 sm:w-3/4 w-full bg-white h-12 px-5 rounded text-md focus:outline-none"
             placeholder="Town"
             required
           />
@@ -157,7 +157,7 @@ export default function SecondStep({ nextStep, handleFormData, values }) {
             name="city"
             value={values.city}
             onChange={handleFormData("city")}
-            className="border-2 border-gray-300 sm:w-3/4 w-full bg-white h-12 px-5 pr-16 rounded text-md focus:outline-none"
+            className="border-2 border-gray-300 sm:w-3/4 w-full bg-white h-12 px-5 rounded text-md focus:outline-none"
             placeholder="City"
             required
           />
@@ -172,7 +172,7 @@ export default function SecondStep({ nextStep, handleFormData, values }) {
             name="county"
             value={values.county}
             onChange={handleFormData("county")}
-            className="border-2 border-gray-300 sm:w-3/4 w-full bg-white h-12 px-5 pr-16 rounded text-md focus:outline-none"
+            className="border-2 border-gray-300 sm:w-3/4 w-full bg-white h-12 px-5 rounded text-md focus:outline-none"
             placeholder="county"
             required
           />
