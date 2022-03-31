@@ -132,7 +132,6 @@ export default function SecondStep({ nextStep, handleFormData, values }) {
             onChange={handleFormData("addressLine2")}
             className="border-2 border-gray-300 sm:w-3/4 w-full bg-white h-12 px-5 pr-16 rounded text-md focus:outline-none"
             placeholder="Street Address"
-            required
           />
         </div>
         <div className="mb-2">
