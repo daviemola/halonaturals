@@ -91,15 +91,15 @@ export default function ThirdStep({ nextStep, handleFormData, values }) {
           {satisfactionlevel && (
             <p className="text-gray-600">
               There aren’t many organic, baby vegan D3 drops delivering one dose
-              in one small drop available. In fact, we’re the only ones. (We
-              checked!) The only other similar supplement cholesterol as an
+              in one small drop available. In fact, we’re the only ones (we
+              checked!). The only other similar supplement cholesterol as an
               ingredient which is cruel to the sheep to obtain. If you agree
               with us that more families should be using safe, natural, kind
               products like ours, we would adore it if you left us an honest
               review below on Amazon to help others learn about us. We aren’t a
               huge corporation with TV commercials. We run on love, mom power
               and passion. That’s why your review is SO important! Thank you for
-              your honesty, The Halo Naturals Family
+              your honesty, The Halo Naturals Family.
             </p>
           )}
         </div>
@@ -125,7 +125,7 @@ export default function ThirdStep({ nextStep, handleFormData, values }) {
         <div className="">
           <label
             htmlFor="email"
-            className="block mb-2 text-sm font-medium text-gray-600"
+            className="block mb-2 text-sm font-medium text-gray-600 sm:text-left text-center"
           >
             Review / Comments* (Minimum 150 characters qualify for your free
             item)
@@ -144,14 +144,16 @@ export default function ThirdStep({ nextStep, handleFormData, values }) {
         </div>
         <div className="flex justify-center">
           {satisfactionlevel && (
-            <a
-              className="bg-gray-700 text-white py-2 rounded uppercase px-4"
-              href="https://www.amazon.com/review/create-review?&asin=B09189HG87"
-              target={"_blank"}
-              rel={"noreferrer"}
-            >
-              Click to post review on Amazon
-            </a>
+            <button className="bg-gray-700 text-white py-2 rounded uppercase px-4 text-sm">
+              <a
+                className=""
+                href="https://www.amazon.com/review/create-review?&asin=B09189HG87"
+                target={"_blank"}
+                rel={"noreferrer"}
+              >
+                Click to post review on Amazon
+              </a>
+            </button>
           )}
         </div>
         <div className="flex justify-center">
@@ -182,7 +184,7 @@ export default function ThirdStep({ nextStep, handleFormData, values }) {
           ) : (
             <button
               type="submit"
-              className="bg-gray-800 text-white py-2 rounded uppercase px-4"
+              className="bg-gray-800 text-white py-2 rounded uppercase px-4 text-sm"
             >
               Submit to get your free item
             </button>

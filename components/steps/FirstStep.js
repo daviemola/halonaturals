@@ -26,14 +26,14 @@ export default function FirstStep({ nextStep, handleFormData, values }) {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+    <div className="pb-12 flex justify-center px-4 sm:px-6 lg:px-8">
       <Toaster />
       <form className="max-w-md w-full space-y-8" onSubmit={submitFormData}>
         <div>
-          <p className="uppercase text-sm tracking-widest font-bold text-gray-500 pb-4">
+          <p className="uppercase text-sm tracking-widest font-bold text-gray-500 pb-4 sm:text-left text-center">
             Step 1 of 4
           </p>
-          <p className="text-gray-700 font-bold text-2xl uppercase">
+          <p className="text-gray-700 font-bold text-2xl uppercase sm:text-left text-center">
             Please Fill in the form.
           </p>
         </div>
